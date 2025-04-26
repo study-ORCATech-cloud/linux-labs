@@ -7,9 +7,12 @@ In this lab, you'll learn how to **write basic bash shell scripts** to automate 
 ## 🎯 Objectives
 
 By the end of this lab, you will:
-- Create and execute simple bash scripts
-- Use variables, conditions, and loops
-- Understand basic script structure
+- Create and execute basic shell scripts
+- Work with variables, input/output, and command-line arguments
+- Implement conditional statements and loops
+- Define and use functions in shell scripts
+- Create practical scripts for file operations
+- Apply debugging and error handling techniques
 
 ---
 
@@ -20,16 +23,18 @@ By the end of this lab, you will:
 
 ---
 
-## 🗂️ Key Bash Concepts Cheat Sheet
+## 🗂️ Key Commands Cheat Sheet
 
-| Concept | Example |
+| Command | Purpose |
 |---------|---------|
-| Define variable | `NAME="Linux"` |
-| Use variable | `echo $NAME` |
-| If statement | `if [ condition ]; then ... fi` |
-| For loop | `for item in list; do ... done` |
-| While loop | `while condition; do ... done` |
-| Script shebang | `#!/bin/bash` |
+| `chmod +x script.sh` | Make a script executable |
+| `./script.sh` | Run a script in the current directory |
+| `bash script.sh` | Run a script with bash (no execute permission needed) |
+| `echo $VAR` | Print a variable's value |
+| `read VAR` | Read user input into a variable |
+| `if [ condition ]; then` | Start a conditional block |
+| `for item in list; do` | Start a for loop |
+| `function_name() { commands; }` | Define a function |
 
 ---
 
@@ -37,80 +42,131 @@ By the end of this lab, you will:
 
 ### 1. Create your first script:
 ```bash
-nano first_script.sh
+# Create a new script file
+nano hello_world.sh
 ```
-Paste this content:
+
+Add this content:
 ```bash
 #!/bin/bash
 
-echo "Hello from your first bash script!"
+# My first bash script
+echo "Hello, World!"
 ```
-Save and exit (`CTRL+O`, `ENTER`, `CTRL+X`).
 
-Make it executable:
+Make it executable and run it:
 ```bash
-chmod +x first_script.sh
-
-./first_script.sh
+chmod +x hello_world.sh
+./hello_world.sh
 ```
 
-### 2. Add variables and conditions:
+### 2. Use variables and user input:
 ```bash
-nano second_script.sh
+# Create another script
+nano greeting.sh
 ```
-Paste this content:
+
+Add this content:
 ```bash
 #!/bin/bash
 
+# Script with variables and user input
 NAME="Linux Student"
+echo "Hello, $NAME!"
 
-if [ "$NAME" == "Linux Student" ]; then
-  echo "Welcome, $NAME!"
+echo "What's your name?"
+read USER_NAME
+echo "Nice to meet you, $USER_NAME!"
+```
+
+Make it executable and run it:
+```bash
+chmod +x greeting.sh
+./greeting.sh
+```
+
+### 3. Add conditionals:
+```bash
+# Create a script with conditions
+nano check_number.sh
+```
+
+Add this content:
+```bash
+#!/bin/bash
+
+# Conditional script
+echo "Enter a number:"
+read NUMBER
+
+if [ "$NUMBER" -gt 0 ]; then
+  echo "You entered a positive number."
+elif [ "$NUMBER" -lt 0 ]; then
+  echo "You entered a negative number."
 else
-  echo "Who are you?"
+  echo "You entered zero."
 fi
 ```
-Save, make executable, and run it.
 
-### 3. Create a loop:
+Make it executable and run it:
 ```bash
-nano loop_script.sh
+chmod +x check_number.sh
+./check_number.sh
 ```
-Paste:
+
+### 4. Create a loop:
+```bash
+# Create a script with a loop
+nano count.sh
+```
+
+Add this content:
 ```bash
 #!/bin/bash
 
-for fruit in apple banana cherry; do
-  echo "I like $fruit"
+# Loop script
+echo "Counting from 1 to 5:"
+for i in 1 2 3 4 5; do
+  echo "Number: $i"
 done
 ```
-Make executable and run it.
+
+Make it executable and run it:
+```bash
+chmod +x count.sh
+./count.sh
+```
 
 ---
 
 ## ✅ Validation Checklist
 
-- [ ] Wrote and executed a simple script
-- [ ] Used variables and conditionals
-- [ ] Created a basic loop
+- [ ] Created and executed a Hello World script
+- [ ] Created a script using variables and user input
+- [ ] Written a script with conditional statements
+- [ ] Implemented a script with loops
+- [ ] (Optional) Created a script with functions
 
 ---
 
 ## 🧹 Cleanup
 ```bash
-rm first_script.sh second_script.sh loop_script.sh
+# Remove the scripts created in this exercise
+rm hello_world.sh greeting.sh check_number.sh count.sh
 ```
 
 ---
 
 ## 🧠 Key Concepts
 
-- Scripts start with a **shebang** (`#!/bin/bash`)
-- Variables store reusable data
-- Conditions and loops make scripts dynamic and powerful
+- Scripts start with a **shebang** line (`#!/bin/bash`) to specify the interpreter
+- Variables store data that can be reused throughout your script
+- Conditions (`if`, `elif`, `else`) let scripts make decisions
+- Loops (`for`, `while`) let scripts repeat actions
+- Functions group related commands for better organization
 
 ---
 
 ## 🔁 What's Next?
-Continue to [LAB13 - Advanced Shell Scripting](../LAB13-Advanced-Shell-Scripting/README.md) to learn about functions, error handling, and more sophisticated scripting techniques!
+Continue to [LAB13 - Advanced Shell Scripting](../LAB13-Advanced-Shell-Scripting/README.md) to learn more advanced scripting techniques, including functions, error handling, and script debugging!
 
